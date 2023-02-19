@@ -1,2 +1,3 @@
-# github-ioc
-Set of Terraform modules and resources designed for management of personal Github repositories
+# Github IoC Terraform module
+
+Set of Terraform modules and resources allowing management of personal Github repositories with Terraform as Infrastructure as Code
