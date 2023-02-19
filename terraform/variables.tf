@@ -1,3 +1,17 @@
+variable "terraform_state_file_path" {
+  description = "Path to terraform.tfstate"
+  type = string
+  default = null
+}
+
+variable "github_token" {
+  description = <<EOF
+    "Github token required for provider authentication.
+    If not set, GITHUB_TOKEN environment variable 
+    can also be provided to avoid commiting secret."
+    EOF
+}
+
 variable "ssh_auth_enabled" {
   description = <<EOF
     "If set to true, creates SSH authentication key
