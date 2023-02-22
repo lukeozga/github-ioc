@@ -1,6 +1,6 @@
 output "ssh_key" {
   value = {
-    "id" = github_user_ssh_key.public_ssh_key.id
-    "url" = github_user_ssh_key.public_ssh_key.url
+    "id"  = module.github_user_ssh_key.ssh_key.id
+    "url" = module.github_user_ssh_key.ssh_key.url
   }
 }
