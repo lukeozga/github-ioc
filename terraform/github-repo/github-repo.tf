@@ -19,10 +19,10 @@ locals {
     archive_on_destroy          = var.archive_on_destroy
   }
   github_repos     = { for repo in var.standard_github_repositories : repo.name => merge(repo, local.general_repository_settings) }
-  pages_repos_list = [ for repo in var.standard_github_repositories : repo.name if repo.pages != null ]
+  pages_repos_list = [for repo in var.standard_github_repositories : repo.name if repo.pages != null]
 }
 
-resource "github_repository" "standard_repositories" {
+resource "github_repository" "standard_repository" {
   for_each = local.github_repos
 
   name                        = each.value.name
@@ -61,4 +61,16 @@ resource "github_repository" "standard_repositories" {
       }
     }
   }
+}
+
+resource "github_branch_default" "default" {
+  for_each = github_repository.standard_repository
+
+  repository = github_repository.standard_repository[each.key].name
+  branch     = var.default_branch_name
+  rename     = var.default_branch_name != "master" ? true : false
+
+  depends_on = [
+    github_repository.standard_repository
+  ]
 }
