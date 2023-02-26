@@ -1,6 +1,14 @@
+variable "github_token" {
+  description = <<EOF
+    "Github token required for provider authentication.
+    If not set, GITHUB_TOKEN environment variable 
+    can also be provided to avoid commiting secret."
+    EOF
+}
+
 variable "standard_github_repositories" {
   description = "Map of objects describing managed non-template Github repositories."
-  type = list(object({
+  type = set(object({
     name               = string
     description        = string
     visibility         = string
@@ -82,13 +90,13 @@ variable "squash_merge_commit_title" {
 variable "squash_merge_commit_message" {
   description = "Can be PR_BODY, COMMIT_MESSAGES, or BLANK for a default squash merge commit message."
   type        = string
-  default     = "BLANK"
+  default     = "COMMIT_MESSAGES"
 }
 
 variable "merge_commit_title" {
   description = "Can be PR_TITLE or MERGE_MESSAGE for a default merge commit title."
   type        = string
-  default     = "MERGE_MESSAGE"
+  default     = "PR_TITLE"
 }
 
 variable "merge_commit_message" {
@@ -106,7 +114,7 @@ variable "delete_branch_on_merge" {
 variable "auto_init" {
   description = "Set to true to produce an initial commit in the repository."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "archived" {
@@ -122,5 +130,14 @@ variable "archive_on_destroy" {
   description = "Set to true to archive the repository instead of deleting on destroy."
   type        = bool
   default     = false
+}
+
+variable "default_branch_name" {
+  description = <<EOF
+  "Name of the default branch created to initialize repository. Github's auto init
+  creates master branch by default"
+  EOF
+  type        = string
+  default     = "master"
 }
 
