@@ -33,7 +33,7 @@ ssh_auth_enabled = true
 * Run:
 
 ```
-ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y >/dev/null 2>&1
+ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa -C "" <<<y >/dev/null 2>&1
 ```
 
 >> This will generate `id_rsa` private key and `id_rsa.pub` public key inside `~/.ssh/` directory. By default terraform will look for public key in the following location: `~/.ssh/id_rsa.pub`. This is exactly where the bublic key has been created. Default SSH public key path location can be changed by providing new value in `public_ssh_key_file_path` variable. This will also require to make changes to above command or moving/renaming key manually.
@@ -58,7 +58,7 @@ ssh-add ~/.ssh/id_rsa
 terraform apply
 ```
 
->> At this point to rotate the key you can run `ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y >/dev/null 2>&1` to create new key pair which will overwrite the existing one and run `terraform apply` to update public key in your Github account.
+>> At this point to rotate the key you can run `ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa -C "" <<<y >/dev/null 2>&1` to create new key pair which will overwrite the existing one and run `terraform apply` to update public key in your Github account.
 
 ## Terraform state file management
 
