@@ -14,6 +14,7 @@ locals {
     merge_commit_title          = var.merge_commit_title,
     merge_commit_message        = var.merge_commit_message,
     delete_branch_on_merge      = var.delete_branch_on_merge,
+    has_downloads               = var.has_downloads,
     auto_init                   = var.auto_init,
     archived                    = var.archived,
     archive_on_destroy          = var.archive_on_destroy
@@ -45,6 +46,7 @@ resource "github_repository" "standard_repository" {
   merge_commit_title          = each.value.merge_commit_title
   merge_commit_message        = each.value.merge_commit_message
   delete_branch_on_merge      = each.value.delete_branch_on_merge
+  has_downloads               = each.value.has_downloads
   auto_init                   = each.value.auto_init
   archived                    = each.value.archived
   archive_on_destroy          = each.value.archive_on_destroy

@@ -96,19 +96,25 @@ variable "squash_merge_commit_message" {
 variable "merge_commit_title" {
   description = "Can be PR_TITLE or MERGE_MESSAGE for a default merge commit title."
   type        = string
-  default     = "PR_TITLE"
+  default     = "MERGE_MESSAGE"
 }
 
 variable "merge_commit_message" {
   description = "Can be PR_BODY, PR_TITLE, or BLANK for a default merge commit message."
   type        = string
-  default     = "BLANK"
+  default     = "PR_TITLE"
 }
 
 variable "delete_branch_on_merge" {
   description = "Automatically delete head branch after a pull request is merged."
   type        = bool
   default     = true
+}
+
+variable "has_downloads" {
+  description = "Set to true to enable the (deprecated) downloads features on the repository."
+  type = bool
+  default = true
 }
 
 variable "auto_init" {

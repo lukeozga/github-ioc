@@ -71,7 +71,7 @@ Terraform state file stores state of resources managed by Terraform. Backend has
 
 ```hcl
 module "repos" {
-  source = "https://github.com/lukeozga/github-ioc//terraform?ref=master"
+  source = "git@github.com:lukeozga/github-ioc.git//terraform?ref=master"
 
   ssh_auth_enabled = true
   standard_github_repositories = [

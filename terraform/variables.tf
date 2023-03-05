@@ -137,13 +137,19 @@ variable "merge_commit_title" {
 variable "merge_commit_message" {
   description = "Can be PR_BODY, PR_TITLE, or BLANK for a default merge commit message."
   type        = string
-  default     = "BLANK"
+  default     = "PR_TITLE"
 }
 
 variable "delete_branch_on_merge" {
   description = "Automatically delete head branch after a pull request is merged."
   type        = bool
   default     = true
+}
+
+variable "has_downloads" {
+  description = "Set to true to enable the (deprecated) downloads features on the repository."
+  type = bool
+  default = true
 }
 
 variable "auto_init" {
